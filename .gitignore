@@ -1,0 +1,5 @@
+db.sqlite3
+superlist/
+chromedriver
+__pycache__
+*.pyc
