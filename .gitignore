@@ -3,3 +3,5 @@ superlist/
 chromedriver
 __pycache__
 *.pyc
+/static
+project_superlists/lists/static/
