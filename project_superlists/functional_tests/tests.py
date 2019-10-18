@@ -1,4 +1,3 @@
-## EXPORT this to your PATH: export PATH="/Users/hugoVendetta/spare_projects/test_driven_development/tdd_with_python:$PATH"
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
