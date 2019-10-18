@@ -4,4 +4,4 @@ chromedriver
 __pycache__
 *.pyc
 /static
-project_superlists/lists/static/
+set_chromedriver.txt
