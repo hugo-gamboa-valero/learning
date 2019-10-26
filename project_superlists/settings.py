@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import requests
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,9 +21,14 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 if "DJANGO_DEBUG_FALSE" in os.environ:
+   try:
+      EC2_PRIVATE_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4', timeout=0.5).text
+   except requests.exceptions.RequestException:
+      pass
+
    DEBUG = False
    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"] 
-   ALLOWED_HOSTS = [os.environ["SITENAME"]]
+   ALLOWED_HOSTS = [EC2_PRIVATE_IP, 'localhost']
 else:
    DEBUG = True
    ALLOWED_HOSTS = []
