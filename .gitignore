@@ -5,3 +5,4 @@ __pycache__
 *.pyc
 /static
 set_chromedriver.txt
+.env
