@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn server for DOMAIN 
+
+[Service]
+Restart=on-failure
+User=hvendetta
+WorkingDirectory=/home/hvendetta/tdd_with_python/sites/staging 
+EnvironmentFile=/home/hvendetta/tdd_with_python/sites/staging/.env 
+
+ExecStart=/home/hvendetta/tdd_with_python/sites/staging/virtualenv/bin/gunicorn \
+    --bind unix:/tmp/DOMAIN.socket project_superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
