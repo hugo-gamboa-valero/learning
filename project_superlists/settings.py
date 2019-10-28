@@ -22,13 +22,14 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if "DJANGO_DEBUG_FALSE" in os.environ:
    try:
-      EC2_PRIVATE_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4', timeout=0.5).text
+      EC2_PUBLIC_IP = requests.get('http://169.254.169.254/latest/meta-data/public-hostname', timeout=0.5).text
+      print(EC2_PUBLIC_IP)
    except requests.exceptions.RequestException:
       pass
 
    DEBUG = False
    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"] 
-   ALLOWED_HOSTS = [EC2_PRIVATE_IP, 'localhost']
+   ALLOWED_HOSTS = [EC2_PUBLIC_IP]
 else:
    DEBUG = True
    ALLOWED_HOSTS = []
