@@ -4,8 +4,8 @@ from fabric.api import cd, env, local, run
 
 REPO_URL = "https://github.com/hugo-gamboa-valero/tdd_with_python.git"
 
-def deploy():
-   site_folder = f"/home/{env.user}/tdd_with_python/sites/{env.area}"
+def deploy(area):
+   site_folder = f"/home/{env.user}/tdd_with_python/sites/{area}"
    run(f"mkdir -p {site_folder}")
 
    with cd(site_folder):
